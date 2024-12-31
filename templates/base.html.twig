@@ -17,36 +17,53 @@
 
     {% block style %}{% endblock %}
 </head>
-<body class="bg-gray-50 text-gray-800">
-<div class="test-scanning-works"></div>
+<body class="bg-gray-50 text-gray-800 relative">
 
-<!-- Header -->
-<header class="bg-white shadow">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" class="text-2xl font-bold text-gray-900">Fotografie Reisüber</a>
-        <nav>
-            <ul class="flex space-x-4">
-                <li><a href="/" class="text-gray-700 hover:text-gray-900">Home</a></li>
-                <li><a href="/portfolio" class="text-gray-700 hover:text-gray-900">Portfolio</a></li>
-                <li><a href="/kontakt" class="text-gray-700 hover:text-gray-900">Kontakt</a></li>
-                <li><a href="/kalender" class="text-gray-700 hover:text-gray-900">Kalender</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <!-- Header -->
+    <header class="absolute left-1/2 transform -translate-x-1/2 top-[50px] w-[1200px] bg-background shadow rounded-lg px-4 py-4 z-10">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center justify-center space-x-4">
+                <!-- Kamera-Symbol mit rundem farbigen Kreis -->
+                <div class="w-[70px] h-[70px] bg-accent rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-[50px] h-[50px]">
+                    <path d="M12 9a3.75 3.75 0 1 0 0 7.5A3.75 3.75 0 0 0 12 9Z" class="fill-background" />
+                    <path fill-rule="evenodd" d="M9.344 3.071a49.52 49.52 0 0 1 5.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 0 1-3 3h-15a3 3 0 0 1-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 0 0 1.11-.71l.822-1.315a2.942 2.942 0 0 1 2.332-1.39ZM6.75 12.75a5.25 5.25 0 1 1 10.5 0 5.25 5.25 0 0 1-10.5 0Zm12-1.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" class="fill-background" />
+                    </svg>
+                </div>
+                
+                <!-- Schriftzug -->
+                <div class="text-center text-gray-900">
+                    <h1 class="text-xl leading-none text-primary">Fotografie</h1>
+                    <h2 class="text-xl text-primary">Reisüber</h2>
+                </div>
+            </div>
 
-<!-- Main Content -->
-<main class="container mx-auto px-4 py-8">
-    {% block content %}
-        <p class="text-center text-lg">Willkommen auf meiner Website! Diese Seite ist noch in Arbeit.</p>
-    {% endblock %}
-</main>
+            <!--<a href="/" class="text-2xl font-bold text-gray-900">
+                <img src="/uploads/media/sulu-240x/03/3-logo-fotografie-reisueber.png" alt="Fotografie Reisüber" />
+            </a>-->
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="/" class="text-primary hover:text-gray-900">Home</a></li>
+                    <li><a href="/portfolio" class="text-primary text-gray-700 hover:text-gray-900">Portfolio</a></li>
+                    <li><a href="/kontakt" class="text-primary text-gray-700 hover:text-gray-900">Kontakt</a></li>
+                    <li><a href="/kalender" class="text-primary text-gray-700 hover:text-gray-900">Kalender</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<!-- Footer -->
-<footer class="bg-gray-100 border-t py-4">
-    <div class="container mx-auto px-4 text-center text-sm text-gray-600">
-        &copy; {{ "now"|date("Y") }} Fotografie Reisüber. Alle Rechte vorbehalten.
-    </div>
-</footer>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        {% block content %}
+            <p class="text-center text-lg">Willkommen auf meiner Website! Diese Seite ist noch in Arbeit.</p>
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t py-4">
+        <div class="container mx-auto px-4 text-center text-sm text-gray-600">
+            &copy; {{ "now"|date("Y") }} Fotografie Reisüber. Alle Rechte vorbehalten.
+        </div>
+    </footer>
 </body>
 </html>

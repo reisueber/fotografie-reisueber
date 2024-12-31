@@ -6,7 +6,13 @@ module.exports = {
     './assets/**/*.css'
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: '#fff', // Beispiel: Hellgrau
+        primary: '#000',   // Beispiel: Dunkelblau
+        accent: '#f59e0b',    // Beispiel: Orange
+      },
+    },
   },
   plugins: [],
 }
