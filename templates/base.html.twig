@@ -20,7 +20,7 @@
 <body class="bg-gray-50 text-gray-800 relative">
 
     <!-- Header -->
-    <header class="absolute left-1/2 transform -translate-x-1/2 top-[50px] w-[1200px] bg-background shadow rounded-lg px-4 py-4 z-10">
+    <header class="fixed left-1/2 transform -translate-x-1/2 top-[50px] w-[1200px] bg-background shadow rounded-lg px-4 py-4 z-10">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center justify-center space-x-4">
                 <!-- Kamera-Symbol mit rundem farbigen Kreis -->
@@ -43,17 +43,20 @@
             </a>-->
             <nav>
                 <ul class="flex space-x-4">
-                    <li><a href="/" class="text-primary hover:text-gray-900">Home</a></li>
-                    <li><a href="/portfolio" class="text-primary text-gray-700 hover:text-gray-900">Portfolio</a></li>
-                    <li><a href="/kontakt" class="text-primary text-gray-700 hover:text-gray-900">Kontakt</a></li>
-                    <li><a href="/kalender" class="text-primary text-gray-700 hover:text-gray-900">Kalender</a></li>
+                    {% for item in sulu_navigation_root_tree('main', 2) %}
+                        <li>
+                            <a href="{{ sulu_content_path(item.url) }}"
+                               title="{{ item.title }}"
+                               class="text-primary hover:text-gray-900">{{ item.title }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
+    <main>
         {% block content %}
             <p class="text-center text-lg">Willkommen auf meiner Website! Diese Seite ist noch in Arbeit.</p>
         {% endblock %}
