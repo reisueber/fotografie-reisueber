@@ -36,11 +36,72 @@
             <tag name="sulu.rlp"/>
         </property>
 
+        <property name="header_image" type="single_media_selection">
+            <meta>
+                <title lang="en">Headerimage</title>
+                <title lang="de">Headerimage</title>
+            </meta>
+        </property>
+
+        <section name="serviceDetailsTop">
+            <meta>
+                <title>Angebote - Zeile 1</title>
+            </meta>
+            <properties>
+                <property name="service_image_1" type="single_media_selection" colspan="4">
+                    <meta>
+                        <title>Bild 1</title>
+                    </meta>
+                </property>
+                <property name="service_text_1" type="text_editor" colspan="4">
+                    <meta>
+                        <title>Text 1</title>
+                    </meta>
+                </property>
+                <property name="service_image_2" type="single_media_selection" colspan="4">
+                    <meta>
+                        <title>Bild 2</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="serviceDetailsBottom">
+            <meta>
+                <title>Angebote - Zeile 2</title>
+            </meta>
+            <properties>
+                <property name="service_text_2" type="text_editor" colspan="4">
+                    <meta>
+                        <title>Text 2</title>
+                    </meta>
+                </property>
+                <property name="service_image_3" type="single_media_selection" colspan="4">
+                    <meta>
+                        <title>Bild 3</title>
+                    </meta>
+                </property>
+                <property name="service_text_3" type="text_editor" colspan="4">
+                    <meta>
+                        <title>Text 3</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
         <property name="article" type="text_editor">
             <meta>
                 <title lang="en">Article</title>
                 <title lang="de">Artikel</title>
             </meta>
         </property>
+
+        <property name="article_2" type="text_editor">
+            <meta>
+                <title lang="en">Article 2</title>
+                <title lang="de">Artikel 2</title>
+            </meta>
+        </property>
+
     </properties>
 </template>
