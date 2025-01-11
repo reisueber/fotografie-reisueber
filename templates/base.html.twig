@@ -20,7 +20,7 @@
 <body class="bg-gray-50 text-gray-800 relative">
 
     <!-- Header -->
-    <header class="fixed left-1/2 transform -translate-x-1/2 top-[50px] w-[1200px] bg-background shadow rounded-lg px-4 py-4 z-10">
+    <header class="fixed left-1/2 transform -translate-x-1/2 top-[50px] w-[1200px] px-4 py-4 z-10">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center justify-center space-x-4">
                 <!-- Kamera-Symbol mit rundem farbigen Kreis -->
@@ -41,13 +41,16 @@
             <!--<a href="/" class="text-2xl font-bold text-gray-900">
                 <img src="/uploads/media/sulu-240x/03/3-logo-fotografie-reisueber.png" alt="Fotografie Reisüber" />
             </a>-->
-            <nav>
-                <ul class="flex space-x-4">
+            <nav class="bg-white/60 rounded-full p-2 shadow-md">
+                <ul class="flex justify-center space-x-4 text-gray-600">
                     {% for item in sulu_navigation_root_tree('main', 2) %}
-                        <li>
+                        <li class="flex items-center">
                             <a href="{{ sulu_content_path(item.url) }}"
                                title="{{ item.title }}"
-                               class="text-primary hover:text-gray-900">{{ item.title }}</a>
+                               class="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-full">{{ item.title }}</a>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-px h-5 bg-gray-400"></span>
                         </li>
                     {% endfor %}
                 </ul>
