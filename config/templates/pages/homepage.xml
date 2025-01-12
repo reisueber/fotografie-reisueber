@@ -36,11 +36,119 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="article" type="text_editor">
+        <property name="header_image" type="single_media_selection">
             <meta>
-                <title lang="en">Article</title>
-                <title lang="de">Artikel</title>
+                <title lang="en">Headerimage</title>
+                <title lang="de">Headerimage</title>
             </meta>
         </property>
+
+        <section name="serviceDetails_1">
+            <meta>
+                <title>Angebote 1</title>
+            </meta>
+            <properties>
+                <property name="service_image_1" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild 1</title>
+                    </meta>
+                </property>
+                <property name="service_text_1" type="text_editor" colspan="6">
+                    <meta>
+                        <title>Text 1</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="serviceDetails_2">
+            <meta>
+                <title>Angebot 2</title>
+            </meta>
+            <properties>
+                <property name="service_image_2" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild 2</title>
+                    </meta>
+                </property>
+                <property name="service_text_2" type="text_editor" colspan="6">
+                    <meta>
+                        <title>Text 2</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="serviceDetails_3">
+            <meta>
+                <title>Angebot 3</title>
+            </meta>
+            <properties>
+                <property name="service_image_3" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild 3</title>
+                    </meta>
+                </property>
+                <property name="service_text_3" type="text_editor" colspan="6">
+                    <meta>
+                        <title>Text 3</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="serviceDetails_4">
+            <meta>
+                <title>Angebot 4</title>
+            </meta>
+            <properties>
+                <property name="service_image_4" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild 4</title>
+                    </meta>
+                </property>
+                <property name="service_text_4" type="text_editor" colspan="6">
+                    <meta>
+                        <title>Text 4</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="pricePackages">
+            <meta>
+                <title>Preise</title>
+            </meta>
+            <properties>
+                <property name="price_package_title" type="text_line">
+                    <meta>
+                        <title>Titel</title>
+                    </meta>
+                </property>
+                <property name="price_package_subtitle" type="text_line">
+                    <meta>
+                        <title>Untertitel</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <section name="aboutme">
+            <meta>
+                <title>Über mich</title>
+            </meta>
+            <properties>
+                <property name="about_me_image" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild</title>
+                    </meta>
+                </property>
+                <property name="about_me_text" type="text_editor">
+                    <meta>
+                        <title>Beschreibung</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
     </properties>
 </template>

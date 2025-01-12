@@ -12,6 +12,9 @@ module.exports = {
         primary: '#000',   // Beispiel: Dunkelblau
         accent: '#f59e0b',    // Beispiel: Orange
       },
+      height: {
+        '160': '40rem',
+      }
     },
   },
   plugins: [],
