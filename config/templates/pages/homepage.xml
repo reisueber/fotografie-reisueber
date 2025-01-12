@@ -43,45 +43,53 @@
             </meta>
         </property>
 
-        <section name="serviceDetailsTop">
+        <section name="serviceDetails_1">
             <meta>
-                <title>Angebote - Zeile 1</title>
+                <title>Angebote 1</title>
             </meta>
             <properties>
-                <property name="service_image_1" type="single_media_selection" colspan="4">
+                <property name="service_image_1" type="single_media_selection" colspan="6">
                     <meta>
                         <title>Bild 1</title>
                     </meta>
                 </property>
-                <property name="service_text_1" type="text_editor" colspan="4">
+                <property name="service_text_1" type="text_editor" colspan="6">
                     <meta>
                         <title>Text 1</title>
-                    </meta>
-                </property>
-                <property name="service_image_2" type="single_media_selection" colspan="4">
-                    <meta>
-                        <title>Bild 2</title>
                     </meta>
                 </property>
             </properties>
         </section>
 
-        <section name="serviceDetailsBottom">
+        <section name="serviceDetails_2">
             <meta>
-                <title>Angebote - Zeile 2</title>
+                <title>Angebot 2</title>
             </meta>
             <properties>
-                <property name="service_text_2" type="text_editor" colspan="4">
+                <property name="service_image_2" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild 2</title>
+                    </meta>
+                </property>
+                <property name="service_text_2" type="text_editor" colspan="6">
                     <meta>
                         <title>Text 2</title>
                     </meta>
                 </property>
-                <property name="service_image_3" type="single_media_selection" colspan="4">
+            </properties>
+        </section>
+
+        <section name="serviceDetails_3">
+            <meta>
+                <title>Angebot 3</title>
+            </meta>
+            <properties>
+                <property name="service_image_3" type="single_media_selection" colspan="6">
                     <meta>
                         <title>Bild 3</title>
                     </meta>
                 </property>
-                <property name="service_text_3" type="text_editor" colspan="4">
+                <property name="service_text_3" type="text_editor" colspan="6">
                     <meta>
                         <title>Text 3</title>
                     </meta>
@@ -89,19 +97,58 @@
             </properties>
         </section>
 
-        <property name="article" type="text_editor">
+        <section name="serviceDetails_4">
             <meta>
-                <title lang="en">Article</title>
-                <title lang="de">Artikel</title>
+                <title>Angebot 4</title>
             </meta>
-        </property>
+            <properties>
+                <property name="service_image_4" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild 4</title>
+                    </meta>
+                </property>
+                <property name="service_text_4" type="text_editor" colspan="6">
+                    <meta>
+                        <title>Text 4</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
 
-        <property name="article_2" type="text_editor">
+        <section name="pricePackages">
             <meta>
-                <title lang="en">Article 2</title>
-                <title lang="de">Artikel 2</title>
+                <title>Preise</title>
             </meta>
-        </property>
+            <properties>
+                <property name="price_package_title" type="text_line">
+                    <meta>
+                        <title>Titel</title>
+                    </meta>
+                </property>
+                <property name="price_package_subtitle" type="text_line">
+                    <meta>
+                        <title>Untertitel</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
 
+        <section name="aboutme">
+            <meta>
+                <title>Über mich</title>
+            </meta>
+            <properties>
+                <property name="about_me_image" type="single_media_selection" colspan="6">
+                    <meta>
+                        <title>Bild</title>
+                    </meta>
+                </property>
+                <property name="about_me_text" type="text_editor">
+                    <meta>
+                        <title>Beschreibung</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
     </properties>
 </template>

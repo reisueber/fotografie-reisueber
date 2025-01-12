@@ -3,13 +3,17 @@
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-5">
     <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+        {% if content.service_image_1 %}
+            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_1.url }}" alt="">
+        {% endif %}
     </div>
     <div>
         {{ content.service_text_1|raw }}
     </div>
     <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+        {% if content.service_image_2 %}
+            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_2.url }}" alt="">
+        {% endif %}
     </div>
     <div>
         {{ content.service_text_2|raw }}
@@ -18,12 +22,16 @@
         {{ content.service_text_3|raw }}
     </div>
     <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+        {% if content.service_image_3 %}
+            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_3.url }}" alt="">
+        {% endif %}
     </div>
     <div>
-        {{ content.service_text_3|raw }}
+        {{ content.service_text_4|raw }}
     </div>
     <div>
-        <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+        {% if content.service_image_4 %}
+            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_4.url }}" alt="">
+        {% endif %}
     </div>
 </div>

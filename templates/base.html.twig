@@ -32,22 +32,22 @@
                 </div>
                 
                 <!-- Schriftzug -->
-                <div class="text-center text-gray-900">
-                    <h1 class="text-xl leading-none text-primary">Fotografie</h1>
-                    <h2 class="text-xl text-primary">Reisüber</h2>
+                <div class="text-center">
+                    <h1 class="text-xl leading-none text-white">Fotografie</h1>
+                    <h2 class="text-xl text-white">Reisüber</h2>
                 </div>
             </div>
 
             <!--<a href="/" class="text-2xl font-bold text-gray-900">
                 <img src="/uploads/media/sulu-240x/03/3-logo-fotografie-reisueber.png" alt="Fotografie Reisüber" />
             </a>-->
-            <nav class="bg-white/60 rounded-full p-2 shadow-md">
+            <nav class="bg-white/40 rounded-full p-2 shadow-md">
                 <ul class="flex justify-center space-x-4 text-gray-600">
                     {% for item in sulu_navigation_root_tree('main', 2) %}
                         <li class="flex items-center">
                             <a href="{{ sulu_content_path(item.url) }}"
                                title="{{ item.title }}"
-                               class="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-full">{{ item.title }}</a>
+                               class="text-white hover:text-gray-900 px-4 py-2 rounded-full">{{ item.title }}</a>
                         </li>
                         <li class="flex items-center">
                             <span class="w-px h-5 bg-gray-400"></span>
