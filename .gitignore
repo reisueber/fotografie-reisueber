@@ -62,3 +62,10 @@ phpstan.neon
 /.twig-cs-fixer.php
 /.twig-cs-fixer.cache
 ###< vincentlanglet/twig-cs-fixer ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
