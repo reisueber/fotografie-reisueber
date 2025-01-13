@@ -7,13 +7,12 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-    // Set output directory for website build
+    // Korrigiere den Output-Pfad
     .setOutputPath('public/build/website/')
     .setPublicPath('/build/website')
 
-    // Entry points: CSS and JS
-    .addStyleEntry('styles', './assets/website/styles/base.css') // Main CSS entry
-    .addEntry('app', './assets/website/js/app.js') // Main JS entry
+    // Entry point anpassen
+    .addEntry('app', './assets/app.js') // Main JS entry
 
     // Enable features
     .enableSourceMaps(!Encore.isProduction()) // Enable source maps in development mode
@@ -22,11 +21,6 @@ Encore
     .enableSingleRuntimeChunk() // Single runtime chunk for better performance
 
     // Enable PostCSS loader (required for Tailwind and postcss-import)
-    .enablePostCssLoader()
-
-    // Configure split chunks for better build management
-    .configureSplitChunks((splitChunks) => {
-        splitChunks.name = 'website/runtime';
-    });
+    .enablePostCssLoader();
 
 module.exports = Encore.getWebpackConfig();

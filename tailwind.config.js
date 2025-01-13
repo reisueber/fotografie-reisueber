@@ -1,22 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './templates/**/*.html.twig',
-    './assets/**/*.js',
-    './assets/**/*.css'
+    "./templates/**/*.{html,html.twig}",
+    "./assets/js/**/*.{js,jsx,ts,tsx,vue}"
   ],
   theme: {
     extend: {
       colors: {
-        background: '#fff', // Beispiel: Hellgrau
-        primary: '#000',   // Beispiel: Dunkelblau
-        accent: '#f59e0b',    // Beispiel: Orange
-      },
-      height: {
-        '160': '40rem',
+        'accent': 'rgb(245 158 11)',
+        'background': '#fff'
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: []
 }
 

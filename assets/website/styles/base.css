@@ -3,16 +3,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-#main-header.scrolled {
-    background-color: rgba(0, 0, 0, 0.7);
-    top: 0;
-    padding: 10px 20px;
-    width: 100%;
-    left: 0;
-    transform: none;
-}
-
-#main-header {
-    transition: all 0.3s ease;
-}
