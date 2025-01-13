@@ -176,20 +176,6 @@ body {
   /* 2 */
 }
 
-#main-header.scrolled {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.7);
-  top: 0;
-  padding: 10px 20px;
-  width: 100%;
-  left: 0;
-  transform: none;
-}
-
-#main-header {
-  transition: all 0.3s ease;
-}
-
 /*
 1. Add the correct height in Firefox.
 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
@@ -602,10 +588,6 @@ video {
   }
 }
 
-.fixed {
-  position: fixed;
-}
-
 .absolute {
   position: absolute;
 }
@@ -718,6 +700,10 @@ video {
 
 .h-60 {
   height: 15rem;
+}
+
+.h-\[24rem\] {
+  height: 24rem;
 }
 
 .h-\[40rem\] {
@@ -929,8 +915,7 @@ video {
 }
 
 .bg-accent {
-  --tw-bg-opacity: 1;
-  background-color: rgb(245 158 11 / var(--tw-bg-opacity, 1));
+  background-color: #your-accent-color;
 }
 
 .bg-gray-100 {
@@ -987,8 +972,8 @@ video {
   background-attachment: fixed;
 }
 
-.bg-top {
-  background-position: top;
+.bg-bottom {
+  background-position: bottom;
 }
 
 .bg-no-repeat {
@@ -996,7 +981,7 @@ video {
 }
 
 .fill-background {
-  fill: #fff;
+  fill: #your-background-color;
 }
 
 .object-cover {
@@ -1214,14 +1199,6 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .duration-300 {
   transition-duration: 300ms;
 }
@@ -1389,6 +1366,10 @@ video {
 
   .lg\:w-8\/12 {
     width: 66.666667%;
+  }
+
+  .lg\:w-\[1200px\] {
+    width: 1200px;
   }
 
   .lg\:max-w-4xl {
