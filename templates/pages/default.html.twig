@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    <h1>{{ content.title }}</h1>
+    {% if content.header_image %}
+        <div class="mx-auto h-[24rem] w-full overflow-hidden shadow-lg">
+            <img src="{{ content.header_image.url }}" alt="{{ content.title }}" />
+        </div>
+    {% endif %}
+    <div class="py-16 bg-white w-[1200px] m-auto">
+        <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+            <h1>{{ content.title }}</h1>
 
-    {{ content.article|raw }}
+            {{ content.article|raw }}
+        </div>
+    </div>
 {% endblock %}
