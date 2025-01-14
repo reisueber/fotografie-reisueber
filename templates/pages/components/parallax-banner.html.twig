@@ -1,9 +1,13 @@
 {% if content.header_image %}
     <div
-            class="mx-auto h-[40rem] w-full overflow-y-scroll bg-cover bg-fixed bg-bottom bg-no-repeat shadow-lg"
+            class="parallax-banner hidden md:block"
             style="background-image:url({{ content.header_image.url }});">
-        <div class="container mx-auto h-full flex items-center justify-center">
-            <h2 class="text-6xl text-white text-center">Augenblicke für die Ewigkeit</h2>
-        </div>
+    </div>
+{% endif %}
+
+{% if content.header_image_mobile %}
+    <div
+            class="parallax-banner block md:hidden"
+            style="background-image:url({{ content.header_image_mobile.url }});">
     </div>
 {% endif %}
