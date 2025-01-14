@@ -36,12 +36,25 @@
             <tag name="sulu.rlp"/>
         </property>
 
-        <property name="header_image" type="single_media_selection">
+        <section name="header_image">
             <meta>
-                <title lang="en">Headerimage</title>
-                <title lang="de">Headerimage</title>
+                <title>Headerimage</title>
             </meta>
-        </property>
+            <properties>
+                <property name="header_image" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Headerimage</title>
+                        <title lang="de">Headerimage</title>
+                    </meta>
+                </property>
+                <property name="header_image_mobile" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Headerimage Mobile</title>
+                        <title lang="de">Headerimage Mobile</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
 
         <section name="serviceDetails_1">
             <meta>
