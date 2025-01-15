@@ -12,6 +12,7 @@
     "build:css": "tailwindcss -i ./assets/css/app.css -o ./public/css/app.css",
     "watch:css": "tailwindcss -i ./assets/css/app.css -o ./public/css/app.css --watch",
     "build": "webpack --config webpack.config.js",
-    "start": "php -S localhost:8000 -t public/ config/router.php"
+    "start": "php -S localhost:8000 -t public/ config/router.php",
+    "copy-assets": "cp -r assets/website/images public/build/website/"
   }
 }
