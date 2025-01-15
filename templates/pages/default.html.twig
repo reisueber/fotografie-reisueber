@@ -3,7 +3,9 @@
 {% block content %}
     {% if content.header_image %}
         <div class="mx-auto h-[24rem] w-full overflow-hidden shadow-lg">
-            <img src="{{ content.header_image.url }}" alt="{{ content.title }}" />
+            <img src="{{ content.header_image.url }}" 
+                 alt="{{ content.title }}" 
+                 class="w-full h-full object-cover" />
         </div>
     {% endif %}
     <div class="py-16 bg-white lg:w-[1200px] m-auto">
