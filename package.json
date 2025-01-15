@@ -11,6 +11,7 @@
   "scripts": {
     "build:css": "tailwindcss -i ./assets/css/app.css -o ./public/css/app.css",
     "watch:css": "tailwindcss -i ./assets/css/app.css -o ./public/css/app.css --watch",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "start": "php -S localhost:8000 -t public/ config/router.php"
   }
 }

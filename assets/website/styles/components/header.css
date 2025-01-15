@@ -2,6 +2,10 @@
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px 20px;
     top: 0px;
+
+    img.logo {
+        width: 280px;
+    }
 }
 
 #main-header {
@@ -12,4 +16,9 @@
     transform: translateX(-50%);
     transition: all 0.3s ease;
     z-index: 1000;
+
+    img.logo {
+        width: 360px;
+        transition: all 0.3s ease;
+    }
 }
