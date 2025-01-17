@@ -1,0 +1,15 @@
+{% if content.header_image %}
+    <div class="mx-auto h-[24rem] w-full overflow-hidden shadow-lg hidden md:block">
+        <img src="{{ content.header_image.url }}" 
+                alt="{{ content.title }}" 
+                class="w-full h-full object-cover" />
+    </div>
+{% endif %}
+    
+{% if content.header_image_mobile %}
+    <div class="mx-auto h-[24rem] w-full overflow-hidden shadow-lg block md:hidden">
+        <img src="{{ content.header_image_mobile.url }}" 
+                alt="{{ content.title }}" 
+                class="w-full h-full object-cover" />
+    </div>
+{% endif %}

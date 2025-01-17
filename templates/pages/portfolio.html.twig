@@ -1,16 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
 {% block content %}
     {% include "pages/components/header-image.html.twig" %}
-    
+
     <div class="py-16 bg-white lg:w-[1200px] m-auto">
         <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <h1>{{ content.title }}</h1>
 
-            {% if content.article %}
-                <div class="mt-8">
-                    {{ content.article|raw }}
-                </div>
+            {% if content.images %}
+                {% include 'pages/components/gallery.html.twig' with {'images': content.images} %}
             {% endif %}
         </div>
     </div>

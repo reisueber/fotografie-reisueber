@@ -1,0 +1,33 @@
+.parallax-banner {
+    height: 80vh;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1024px) {
+    .parallax-banner {
+        height: 60vh;
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 768px) {
+    .parallax-banner {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .parallax-banner {
+        height: 40vh;
+    }
+}
