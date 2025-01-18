@@ -11,6 +11,20 @@ Encore
     .setOutputPath('public/build/website/')
     .setPublicPath('/build/website')
 
+    // Kopiere Bilder von assets nach public/build
+    .copyFiles({
+        from: './assets/website/images',
+        to: 'images/[path][name].[ext]',
+        pattern: /\.(png|jpg|jpeg|svg|ico|webmanifest)$/
+    })
+
+    // Kopiere Fonts von assets nach public/build
+    .copyFiles({
+        from: './assets/website/fonts',
+        to: 'fonts/[path][name].[ext]',
+        pattern: /\.(woff|woff2)$/
+    })
+
     // Entry point anpassen
     .addEntry('app', './assets/app.js') // Main JS entry
 
