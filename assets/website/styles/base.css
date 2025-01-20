@@ -1,12 +1,13 @@
+@import './base/fonts.css';
 @import './components/header.css';
 @import './components/parallax-banner.css';
 
 @layer base {
     h1 {
-        @apply text-2xl font-bold pb-2;
+        @apply text-6xl pb-2 text-primary;
     }
     h2 {
-        @apply text-2xl font-bold pb-2;
+        @apply text-4xl pb-2;
     }
     p {
         @apply py-2;
