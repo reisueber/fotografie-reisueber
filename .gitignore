@@ -26,6 +26,7 @@
 # web
 /public/bundles
 /public/uploads
+/public/.htaccess
 
 # composer
 /composer.phar
