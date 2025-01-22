@@ -16,6 +16,7 @@
     <default-templates>
         <default-template type="page">default</default-template>
         <default-template type="home">homepage</default-template>
+        <default-template type="contact">contact</default-template>
     </default-templates>
 
     <!-- See: https://docs.sulu.io/en/latest/book/webspaces.html#excluded-templates-optional
@@ -49,22 +50,22 @@
             <environments>
                 <environment type="prod">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
                 <environment type="stage">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
                 <environment type="test">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
                 <environment type="dev">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
             </environments>
