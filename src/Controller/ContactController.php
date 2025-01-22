@@ -22,13 +22,14 @@ class ContactController extends AbstractController
         // Validierung
         if (!$name || !$email || !$message) {
             $this->addFlash('error', 'Bitte füllen Sie alle Pflichtfelder aus.');
-            return $this->redirectToRoute('app.page', ['slug' => 'kontakt']);
+        return $this->redirect($request->headers->get('referer', '/'));
         }
 
         try {
             $email = (new Email())
-                ->from($email)
-                ->to('info@fotografie-reisueber.de') // Hier Ihre E-Mail-Adresse eintragen
+                ->from('info@fotografie-reisueber.de')
+                ->replyTo($email)
+                ->to('info@fotografie-reisueber.de')
                 ->subject('Neue Kontaktanfrage von ' . $name)
                 ->text("Name: {$name}\nEmail: {$email}\nTelefon: {$phone}\n\nNachricht:\n{$message}");
 
@@ -39,6 +40,6 @@ class ContactController extends AbstractController
             $this->addFlash('error', 'Entschuldigung, es gab einen Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.');
         }
 
-        return $this->redirectToRoute('app.page', ['slug' => 'kontakt']);
+        return $this->redirect($request->headers->get('referer', '/'));
     }
 }
