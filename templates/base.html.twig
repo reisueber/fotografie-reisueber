@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="{{ app.request.locale|split('_')[0] }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,11 +24,33 @@
         }) }}
     {% endblock %}
 
+    {% block localizations %}
+        {% for localization in localizations|filter(localization => localization.locale != 'en') %}
+            {% if localization.locale != app.request.locale %}
+                <link rel="alternate" href="{{ sulu_content_path(uuid, localization.locale) }}" hreflang="{{ localization.locale }}">
+            {% endif %}
+        {% endfor %}
+    {% endblock %}
+
     {% block style %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body class="bg-gray-50 text-gray-800 relative">
+    <!-- Flash Messages -->
+    <div class="fixed top-4 right-4 z-50 space-y-4">
+        {% for message in app.flashes('success') %}
+            <div class="bg-green-100 border border-green-400 text-green-700 px-6 py-3 rounded-lg shadow-lg">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('error') %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-6 py-3 rounded-lg shadow-lg">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
 
     <!-- Header -->
     <header id="main-header" class="absolute left-1/2 transform -translate-x-1/2 lg:w-[1200px] px-4 py-4 z-10">

@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>contact</key>
+
+    <view>pages/contact</view>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+    <cacheLifetime>86400</cacheLifetime>
+
+    <meta>
+        <title lang="en">Contact</title>
+        <title lang="de">Kontakt</title>
+    </meta>
+
+    <properties>
+        <section name="header_image">
+            <meta>
+                <title>Headerimage</title>
+            </meta>
+            <properties>
+                <property name="header_image" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Headerimage</title>
+                        <title lang="de">Headerimage</title>
+                    </meta>
+                </property>
+                <property name="header_image_mobile" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Headerimage Mobile</title>
+                        <title lang="de">Headerimage Mobile</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+        <section name="highlight">
+            <properties>
+                <property name="title" type="text_line" mandatory="true">
+                    <meta>
+                        <title lang="en">Title</title>
+                        <title lang="de">Titel</title>
+                    </meta>
+                    <params>
+                        <param name="headline" value="true"/>
+                    </params>
+                    <tag name="sulu.rlp.part"/>
+                </property>
+
+                <property name="url" type="resource_locator" mandatory="true">
+                    <meta>
+                        <title lang="en">URL</title>
+                        <title lang="de">URL</title>
+                    </meta>
+                    <tag name="sulu.rlp"/>
+                </property>
+
+                <property name="description" type="text_editor">
+                    <meta>
+                        <title lang="en">Description</title>
+                        <title lang="de">Beschreibung</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+    </properties>
+</template>
