@@ -121,9 +121,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-100 border-t py-4">
-        <div class="container mx-auto px-4 text-center text-sm text-gray-600">
-            &copy; {{ "now"|date("Y") }} Fotografie Reisüber. Alle Rechte vorbehalten.
-        </div>
+        {% include "layout/footer.html.twig" %}
     </footer>
 
     {% block javascripts %}
