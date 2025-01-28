@@ -6,10 +6,13 @@
     <div class="py-16 bg-white lg:w-[1200px] m-auto">
         <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <h1>{{ content.title }}</h1>
-
-            {% if content.images %}
-                {% include 'pages/components/gallery.html.twig' with {'images': content.images} %}
-            {% endif %}
+            <p>{{ content.article|raw }}</p>
         </div>
+    </div>
+
+    <div class="w-full">
+        {% if content.images %}
+            {% include 'pages/components/gallery.html.twig' with {'images': content.images} %}
+        {% endif %}
     </div>
 {% endblock %}

@@ -56,6 +56,13 @@
             </properties>
         </section>
 
+        <property name="article" type="text_editor">
+            <meta>
+                <title lang="en">Article</title>
+                <title lang="de">Artikel</title>
+            </meta>
+        </property>
+
         <property name="images" type="media_selection">
             <meta>
                 <title lang="en">Images</title>
