@@ -4,7 +4,10 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
     <div class="order-1 md:order-1 lg:order-1">
         {% if content.service_image_1 %}
-            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_1.url }}" alt="">
+            <img class="h-auto max-w-full rounded-lg"
+                 src="{{ content.service_image_1.url }}"
+                 alt="{{ content.service_text_1|raw }}"
+                 loading="lazy">
         {% endif %}
     </div>
     <div class="flex items-center justify-center order-2 md:order-2 lg:order-2">
@@ -12,7 +15,10 @@
     </div>
     <div class="order-3 md:order-4 lg:order-3">
         {% if content.service_image_2 %}
-            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_2.url }}" alt="">
+            <img class="h-auto max-w-full rounded-lg"
+                 src="{{ content.service_image_2.url }}"
+                 alt="{{ content.service_text_2|raw }}"
+                 loading="lazy">
         {% endif %}
     </div>
     <div class="flex items-center justify-center order-4 md:order-3 lg:order-4">
@@ -23,7 +29,10 @@
     </div>
     <div class="order-5 md:order-5 lg:order-6">
         {% if content.service_image_3 %}
-            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_3.url }}" alt="">
+            <img class="h-auto max-w-full rounded-lg"
+                 src="{{ content.service_image_3.url }}"
+                 alt="{{ content.service_text_3|raw }}"
+                 loading="lazy">
         {% endif %}
     </div>
     <div class="flex items-center justify-center order-8 md:order-7 lg:order-7">
@@ -31,7 +40,10 @@
     </div>
     <div class="order-7 md:order-8 lg:order-8">
         {% if content.service_image_4 %}
-            <img class="h-auto max-w-full rounded-lg" src="{{ content.service_image_4.url }}" alt="">
+            <img class="h-auto max-w-full rounded-lg"
+                 src="{{ content.service_image_4.url }}"
+                 alt="{{ content.service_text_4|raw }}"
+                 loading="lazy">
         {% endif %}
     </div>
 </div>

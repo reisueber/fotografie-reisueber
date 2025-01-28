@@ -3,7 +3,10 @@
         <div class="grid gap-4">
             {% for image in column %}
                 <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{ image.url }}" alt="{{ image.title }}">
+                    <img class="h-auto max-w-full rounded-lg"
+                         src="{{ image.url }}"
+                         alt="{{ image.title }}"
+                         loading="lazy">
                 </div>
             {% endfor %}
         </div>
