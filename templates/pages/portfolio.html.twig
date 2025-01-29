@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    {% include "pages/components/header-image.html.twig" %}
+    {% include "components/header-image.html.twig" %}
 
     <div class="py-16 bg-white lg:w-[1200px] m-auto">
         <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
@@ -12,7 +12,7 @@
 
     <div class="w-full">
         {% if content.images %}
-            {% include 'pages/components/gallery.html.twig' with {'images': content.images} %}
+            {% include 'components/gallery.html.twig' with {'images': content.images} %}
         {% endif %}
     </div>
 {% endblock %}
