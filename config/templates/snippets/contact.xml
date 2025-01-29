@@ -47,5 +47,18 @@
                 <title lang="de">E-Mail</title>
             </meta>
         </property>
+
+        <property name="whatsapp" type="url">
+            <meta>
+                <title lang="en">Whatsapp Link</title>
+                <title lang="de">Whatsapp Link</title>
+            </meta>
+            <params>
+                <param name="schemes" type="collection">
+                    <param name="http://"/>
+                    <param name="https://"/>
+                </param>
+            </params>
+        </property>
     </properties>
 </template>
