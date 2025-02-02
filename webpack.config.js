@@ -35,6 +35,7 @@ Encore
     .enableSingleRuntimeChunk() // Single runtime chunk for better performance
 
     // Enable PostCSS loader (required for Tailwind and postcss-import)
-    .enablePostCssLoader();
+    .enablePostCssLoader()
+    .enableSassLoader();
 
 module.exports = Encore.getWebpackConfig();

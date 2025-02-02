@@ -22,7 +22,7 @@
         transition: all 0.3s ease;
     }
 
-    @media (max-width: 768px) {
+    @media (min-width: 768px) {
         top: 50px;
     }
 }
