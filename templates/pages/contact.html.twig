@@ -62,8 +62,28 @@
                 {% endif %}
 
                 <form action="{{ path('contact_form_submit') }}" method="POST" class="space-y-6">
+                    <input type="hidden" name="_token" value="{{ csrf_token('contact-form') }}">
+                    
+                    <div class="hidden">
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    {% for message in app.flashes('success') %}
+                        <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
+                    {% for message in app.flashes('error') %}
+                        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
                     <div class="relative">
-                        <input type="text" id="name" name="name" required class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " />
+                        <input type="text" id="name" name="name" required maxlength="100"
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" 
+                            placeholder=" " />
                         <label for="name" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                             Name *
                         </label>
@@ -71,23 +91,26 @@
 
                     <div class="relative">
                         <input type="email" id="email" name="email" required 
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " />
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" 
+                            placeholder=" " />
                         <label for="email" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                             E-Mail *
                         </label>
                     </div>
 
                     <div class="relative">
-                        <input type="tel" id="phone" name="phone"
-                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" " />
+                        <input type="tel" id="phone" name="phone" maxlength="20"
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" 
+                            placeholder=" " />
                         <label for="phone" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                             Telefon
                         </label>
                     </div>
 
                     <div class="relative">
-                        <textarea id="message" name="message" rows="6" required
-                                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" placeholder=" "></textarea>
+                        <textarea id="message" name="message" rows="6" required maxlength="1000"
+                            class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer" 
+                            placeholder=" "></textarea>
                         <label for="message" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-primary peer-focus:dark:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">
                             Nachricht *
                         </label>
