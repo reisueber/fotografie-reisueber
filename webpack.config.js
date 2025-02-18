@@ -25,6 +25,13 @@ Encore
         pattern: /\.(woff|woff2)$/
     })
 
+    // Kopiere Klaro von assets nach public/build
+    .copyFiles({
+        from: './assets/website/js/third-party/klaro',
+        to: 'klaro/[path][name].[ext]',
+        pattern: /\.(js|css)$/
+    })
+
     // Entry point anpassen
     .addEntry('app', './assets/app.js') // Main JS entry
 
