@@ -8,29 +8,20 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\RateLimiter\RateLimiterFactory;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class ContactController extends AbstractController
 {
     #[Route('/contact-form-submit', name: 'contact_form_submit', methods: ['POST'])]
     public function submit(
-        Request $request, 
-        MailerInterface $mailer, 
-        ValidatorInterface $validator,
-        RateLimiterFactory $contactLimiter
+        Request $request,
+        MailerInterface $mailer,
+        ValidatorInterface $validator
     ): Response {
         // CSRF-Schutz
         if (!$this->isCsrfTokenValid('contact-form', $request->request->get('_token'))) {
             $this->addFlash('error', 'Ungültiges Formular-Token.');
-            return $this->redirect($request->headers->get('referer', '/'));
-        }
-
-        // Rate Limiting
-        $limiter = $contactLimiter->create($request->getClientIp());
-        if (false === $limiter->consume(1)->isAccepted()) {
-            $this->addFlash('error', 'Zu viele Anfragen. Bitte versuchen Sie es später erneut.');
             return $this->redirect($request->headers->get('referer', '/'));
         }
 
@@ -63,7 +54,7 @@ class ContactController extends AbstractController
 
         try {
             $emailObj = (new Email())
-                ->from('info@fotografie-reisueber.de')
+                ->from('ausgangsserver@reisueber.de')
                 ->replyTo($email)
                 ->to('info@fotografie-reisueber.de')
                 ->subject('Neue Kontaktanfrage von ' . htmlspecialchars($name))
