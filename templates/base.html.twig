@@ -129,6 +129,13 @@
 
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
+        <script defer type="text/javascript" src="build/website/klaro/klaro-config.js"></script>
+        <script 
+            defer
+            data-config="klaroConfig"
+            type="application/javascript"
+            src="build/website/klaro/klaro.js">
+        </script>
     {% endblock %}
 </body>
 </html>
