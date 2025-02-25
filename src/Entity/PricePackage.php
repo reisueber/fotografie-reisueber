@@ -50,6 +50,13 @@ class PricePackage implements AuditableInterface
     #[Serializer\Groups(["Default", "api"])]
     private array $tracklist = [];
 
+    /**
+     * @var array<int, array{text: string}>
+     */
+    #[ORM\Column(name: "bullet_points", type: Types::JSON)]
+    #[Serializer\Groups(["Default", "api"])]
+    private array $bulletPoints = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -112,5 +119,21 @@ class PricePackage implements AuditableInterface
     public function setTracklist(array $tracklist): void
     {
         $this->tracklist = $tracklist;
+    }
+
+    /**
+     * @return array<int, array{text: string}>
+     */
+    public function getBulletPoints(): array
+    {
+        return $this->bulletPoints;
+    }
+
+    /**
+     * @param array<int, array{text: string}> $bulletPoints
+     */
+    public function setBulletPoints(array $bulletPoints): void
+    {
+        $this->bulletPoints = $bulletPoints;
     }
 }

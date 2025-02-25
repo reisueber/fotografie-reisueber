@@ -3,5 +3,8 @@
     "app.price": "Price",
     "app.description": "Description",
     "app.name": "Name",
-    "app.title": "Title"
+    "app.title": "Title",
+    "app.bullet_points": "Bullet Points",
+    "app.bullet_point": "Bullet Point",
+    "app.text": "Text"
 }

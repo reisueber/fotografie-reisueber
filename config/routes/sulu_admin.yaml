@@ -144,6 +144,15 @@ app.price_packages.create:
     methods: [POST]
 
 
+app.price_packages.update:
+    path: /admin/api/price-packages/{id}
+    controller: App\Controller\Admin\PricePackageController::putAction
+    methods: [PUT]
+
+app.price_packages.delete:
+    path: /admin/api/price-packages/{id}
+    controller: App\Controller\Admin\PricePackageController::deleteAction
+    methods: [DELETE]
 
 
 

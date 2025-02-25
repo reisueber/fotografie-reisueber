@@ -18,4 +18,24 @@ class PricePackageRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, PricePackage::class);
     }
-} 
+    
+    /**
+     * @return PricePackage[]
+     */
+    public function findAllOrderedByPrice(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.price', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+    
+    /**
+     * @return PricePackage[]
+     */
+    public function findPublished(): array
+    {
+        // Hier könnte man später eine Logik für die Veröffentlichung hinzufügen
+        return $this->findAll();
+    }
+}

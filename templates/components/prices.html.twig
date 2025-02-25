@@ -92,4 +92,19 @@
             </p>
         </div>
     {% endif %}
+
+    <ul>
+        {% for package in pricePackages %}
+            <li>
+                <h3>{{ package.title }}</h3>
+                <p>{{ package.price }}</p>
+                <p>{{ package.description }}</p>
+                <ul>
+                    {% for feature in package.features %}
+                        <li>{{ feature }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
 </div>

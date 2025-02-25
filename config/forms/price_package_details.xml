@@ -24,5 +24,28 @@
                 <title>app.description</title>
             </meta>
         </property>
+
+        <property name="bulletPoints" type="block">
+            <meta>
+                <title>app.bullet_points</title>
+            </meta>
+            <params>
+                <param name="default_type" value="bulletPoint" />
+            </params>
+            <types>
+                <type name="bulletPoint">
+                    <meta>
+                        <title>app.bullet_point</title>
+                    </meta>
+                    <properties>
+                        <property name="text" type="text_line" mandatory="true">
+                            <meta>
+                                <title>app.text</title>
+                            </meta>
+                        </property>
+                    </properties>
+                </type>
+            </types>
+        </property>
     </properties>
 </form> 

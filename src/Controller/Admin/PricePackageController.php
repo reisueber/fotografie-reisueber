@@ -31,6 +31,7 @@ use Symfony\Component\Routing\Annotation\Route;
  *     title: string,
  *     image: array{id: int}|null,
  *     tracklist: mixed[],
+ *     bulletPoints: mixed[],
  * }
  */
 class PricePackageController extends AbstractFOSRestController implements SecuredControllerInterface
@@ -161,6 +162,7 @@ class PricePackageController extends AbstractFOSRestController implements Secure
                 ? ['id' => $image->getId()]
                 : null,
             'tracklist' => $entity->getTracklist(),
+            'bulletPoints' => $entity->getBulletPoints(),
         ];
     }
 
@@ -174,6 +176,7 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         $entity->setTitle($data['title']);
         $entity->setImage($imageId ? $this->mediaManager->getEntityById($imageId) : null);
         $entity->setTracklist($data['tracklist'] ?? []);
+        $entity->setBulletPoints($data['bulletPoints'] ?? []);
     }
 
     public function getSecurityContext(): string
