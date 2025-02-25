@@ -1,0 +1,12 @@
+app:
+  music: 'Music'
+  albums: 'Albums'
+  image: 'Image'
+  tracklist: 'Tracklist'
+  track: 'Track'
+  interpreter: 'Interpreter'
+  add_track: 'Add track'
+  album_selection_label: 'Select album'
+  select_albums: 'Select albums'
+  select_album: 'Select album'
+  no_album_selected: 'No album selected' 

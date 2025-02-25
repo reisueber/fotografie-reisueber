@@ -1,0 +1,5 @@
+app_album_api:
+    type: rest
+    prefix: /admin/api
+    resource: App\Controller\Admin\AlbumController
+    name_prefix: app. 
