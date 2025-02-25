@@ -4,3 +4,9 @@ app_album_api:
     resource: App\Controller\Admin\AlbumController
     prefix: /admin/api/albums
     name_prefix: app.albums.
+
+app_price_package_api:
+    type: rest
+    resource: App\Controller\Admin\PricePackageController
+    prefix: /admin/api/price_packages
+    name_prefix: app.price_packages.

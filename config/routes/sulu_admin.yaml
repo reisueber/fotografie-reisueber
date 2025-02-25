@@ -127,3 +127,25 @@ app.albums.create:
     path: /admin/api/albums
     controller: App\Controller\Admin\AlbumController::postAction
     methods: [POST]
+
+app.price_packages.list:
+    path: /admin/api/price_packages
+    controller: App\Controller\Admin\PricePackageController::cgetAction
+    methods: [GET]
+
+
+app.price_packages.detail:
+    path: /admin/api/price_packages/{id}
+    controller: App\Controller\Admin\PricePackageController::getAction
+    methods: [GET]
+
+app.price_packages.create:
+    path: /admin/api/price_packages
+    controller: App\Controller\Admin\PricePackageController::postAction
+    methods: [POST]
+
+
+
+
+
+

@@ -11,3 +11,7 @@ sulu_admin:
             routes:
                 list: app.albums.list
                 detail: app.albums.detail
+        price_packages:
+            routes:
+                list: app.price_packages.list
+                detail: app.price_packages.detail

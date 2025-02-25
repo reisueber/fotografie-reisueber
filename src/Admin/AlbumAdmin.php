@@ -33,14 +33,14 @@ class AlbumAdmin extends Admin
 
     public function configureNavigationItems(NavigationItemCollection $navigationItemCollection): void
     {
-        //if ($this->securityChecker->hasPermission(Album::SECURITY_CONTEXT, PermissionTypes::EDIT)) {
+        if ($this->securityChecker->hasPermission(Album::SECURITY_CONTEXT, PermissionTypes::EDIT)) {
             $albums = new NavigationItem('app.albums');
             $albums->setPosition(30);
             $albums->setView(static::LIST_VIEW);
             $albums->setIcon('su-image');
             
             $navigationItemCollection->add($albums);
-        //}
+        }
     }
 
     public function configureViews(ViewCollection $viewCollection): void
