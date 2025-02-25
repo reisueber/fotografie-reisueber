@@ -23,3 +23,15 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Controller\Admin\AlbumController:
+        tags:
+            - { name: sulu.context, context: admin }
+            - { name: controller.service_arguments }
+        public: true
+
+    App\Admin\AlbumsAdmin:
+        arguments:
+            - '@sulu_admin.view_builder_factory'
+        tags:
+            - { name: sulu.admin }

@@ -1,5 +1,7 @@
 <?php
 
+// src/Controller/Admin/AlbumController.php
+
 declare(strict_types=1);
 
 namespace App\Controller\Admin;
@@ -7,21 +9,21 @@ namespace App\Controller\Admin;
 use App\Common\DoctrineListRepresentationFactory;
 use App\Entity\Album;
 use Doctrine\ORM\EntityManagerInterface;
-use Sulu\Bundle\MediaBundle\Entity\MediaInterface;
-use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
-use Sulu\Component\Security\SecuredControllerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Routing\Annotation\Route;
-use FOS\RestBundle\Controller\Annotations\RouteResource;
+use FOS\RestBundle\Context\Context;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
+use Sulu\Bundle\MediaBundle\Entity\MediaInterface;
+use Sulu\Bundle\MediaBundle\Media\Manager\MediaManagerInterface;
 use Sulu\Component\Rest\ListBuilder\Doctrine\DoctrineListBuilderFactoryInterface;
 use Sulu\Component\Rest\ListBuilder\Metadata\FieldDescriptorFactoryInterface;
 use Sulu\Component\Rest\ListBuilder\PaginatedRepresentation;
 use Sulu\Component\Rest\RestHelperInterface;
+use Sulu\Component\Security\SecuredControllerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @phpstan-type AlbumData array{
@@ -31,57 +33,67 @@ use Sulu\Component\Rest\RestHelperInterface;
  *     tracklist: mixed[],
  * }
  */
-/**
- * @RouteResource("album")
- */
-class AlbumController extends AbstractController implements SecuredControllerInterface
+class AlbumController extends AbstractFOSRestController implements SecuredControllerInterface
 {
     protected $doctrineListRepresentationFactory;
     protected $entityManager;
     protected $mediaManager;
+    protected $viewHandler;
+    protected $fieldDescriptorFactory;
+    protected $listBuilderFactory;
+    protected $restHelper;
 
     public function __construct(
         DoctrineListRepresentationFactory $doctrineListRepresentationFactory,
         EntityManagerInterface $entityManager,
         MediaManagerInterface $mediaManager,
-        private ViewHandlerInterface $viewHandler,
-        private FieldDescriptorFactoryInterface $fieldDescriptorFactory,
-        private DoctrineListBuilderFactoryInterface $listBuilderFactory,
-        private RestHelperInterface $restHelper
+        ViewHandlerInterface $viewHandler,
+        FieldDescriptorFactoryInterface $fieldDescriptorFactory,
+        DoctrineListBuilderFactoryInterface $listBuilderFactory,
+        RestHelperInterface $restHelper
     ) {
         $this->doctrineListRepresentationFactory = $doctrineListRepresentationFactory;
         $this->entityManager = $entityManager;
         $this->mediaManager = $mediaManager;
+        $this->viewHandler = $viewHandler;
+        $this->fieldDescriptorFactory = $fieldDescriptorFactory;
+        $this->listBuilderFactory = $listBuilderFactory;
+        $this->restHelper = $restHelper;
     }
 
-    #[Route(path: '/admin/api/albums/{id}', methods: ['GET'], name: 'app.get_album')]
-    public function get(int $id): Response
+    #[Route(path: '/{id}', methods: ['GET'], name: 'app.albums.get_album')]
+    public function getAction(int $id): Response
     {
         $album = $this->entityManager->getRepository(Album::class)->find($id);
         if (!$album instanceof Album) {
             throw new NotFoundHttpException();
         }
 
-        return $this->json($this->getDataForEntity($album));
+        $view = View::create($this->getDataForEntity($album));
+        $view->setFormat('json');
+        return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/admin/api/albums/{id}', methods: ['PUT'], name: 'app.put_album')]
-    public function put(Request $request, int $id): Response
+    #[Route(path: '/{id}', methods: ['PUT'], name: 'app.albums.put_album')]
+    public function putAction(Request $request, int $id): Response
     {
         $album = $this->entityManager->getRepository(Album::class)->find($id);
         if (!$album instanceof Album) {
             throw new NotFoundHttpException();
         }
+
         /** @var AlbumData $data */
         $data = $request->toArray();
         $this->mapDataToEntity($data, $album);
         $this->entityManager->flush();
 
-        return $this->json($this->getDataForEntity($album));
+        $view = View::create($this->getDataForEntity($album));
+        $view->setFormat('json');
+        return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/admin/api/albums', methods: ['POST'], name: 'app.post_album')]
-    public function post(Request $request): Response
+    #[Route(path: '', methods: ['POST'], name: 'app.albums.post_album')]
+    public function postAction(Request $request): Response
     {
         $album = new Album();
         /** @var AlbumData $data */
@@ -90,22 +102,28 @@ class AlbumController extends AbstractController implements SecuredControllerInt
         $this->entityManager->persist($album);
         $this->entityManager->flush();
 
-        return $this->json($this->getDataForEntity($album), 201);
+        $view = View::create($this->getDataForEntity($album));
+        $view->setFormat('json');
+        $view->setStatusCode(201);
+        return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/admin/api/albums/{id}', methods: ['DELETE'], name: 'app.delete_album')]
-    public function delete(int $id): Response
+    #[Route(path: '/{id}', methods: ['DELETE'], name: 'app.albums.delete_album')]
+    public function deleteAction(int $id): Response
     {
         /** @var Album $album */
         $album = $this->entityManager->getReference(Album::class, $id);
         $this->entityManager->remove($album);
         $this->entityManager->flush();
 
-        return $this->json(null, 204);
+        $view = View::create(null);
+        $view->setFormat('json');
+        $view->setStatusCode(204);
+        return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/admin/api/albums', methods: ['GET'], name: 'app.get_album_list')]
-    public function getList(): Response
+    #[Route(path: '', methods: ['GET'], name: 'app.albums.cget_album')]
+    public function cgetAction(Request $request): Response
     {
         $fieldDescriptors = $this->fieldDescriptorFactory->getFieldDescriptors(Album::RESOURCE_KEY);
         $listBuilder = $this->listBuilderFactory->create(Album::class);
@@ -114,16 +132,18 @@ class AlbumController extends AbstractController implements SecuredControllerInt
         $listRepresentation = new PaginatedRepresentation(
             $listBuilder->execute(),
             Album::RESOURCE_KEY,
-            $listBuilder->getCurrentPage(),
-            $listBuilder->getLimit(),
-            $listBuilder->count()
+            (int) $listBuilder->getCurrentPage(),
+            (int) $listBuilder->getLimit(),
+            (int) $listBuilder->count()
         );
 
-        return $this->viewHandler->handle(View::create($listRepresentation));
+        $view = View::create($listRepresentation);
+        $view->setFormat('json');
+        return $this->viewHandler->handle($view);
     }
 
     /**
-     * @return AlbumData $data
+     * @return AlbumData
      */
     protected function getDataForEntity(Album $entity): array
     {
@@ -144,11 +164,11 @@ class AlbumController extends AbstractController implements SecuredControllerInt
      */
     protected function mapDataToEntity(array $data, Album $entity): void
     {
-        $imageId = $data['image']['id'] ?? null;
+        $imageId = isset($data['image']) && isset($data['image']['id']) ? $data['image']['id'] : null;
 
         $entity->setTitle($data['title']);
         $entity->setImage($imageId ? $this->mediaManager->getEntityById($imageId) : null);
-        $entity->setTracklist($data['tracklist']);
+        $entity->setTracklist($data['tracklist'] ?? []);
     }
 
     public function getSecurityContext(): string

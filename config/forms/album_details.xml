@@ -1,4 +1,5 @@
 <?xml version="1.0" ?>
+<!-- config/forms/album_details.xml -->
 <form xmlns="http://schemas.sulu.io/template/template"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/form-1.0.xsd"
@@ -6,7 +7,7 @@
     <key>album_details</key>
 
     <properties>
-        <property name="title" type="text_line" mandatory="true" colspan="12">
+        <property name="title" type="text_line" mandatory="true">
             <meta>
                 <title>sulu_admin.title</title>
             </meta>
@@ -14,11 +15,14 @@
 
         <property name="image" type="single_media_selection">
             <meta>
-                <title>app.image</title>
+                <title>sulu_admin.image</title>
             </meta>
-            <params>
-                <param name="types" value="image"/>
-            </params>
+        </property>
+
+        <property name="tracklist" type="text_editor">
+            <meta>
+                <title>albums.tracklist</title>
+            </meta>
         </property>
     </properties>
 </form>

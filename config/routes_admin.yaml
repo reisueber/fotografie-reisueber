@@ -1,5 +1,6 @@
+# config/routes_admin.yaml
 app_album_api:
     type: rest
-    prefix: /admin/api
     resource: App\Controller\Admin\AlbumController
-    name_prefix: app. 
+    prefix: /admin/api/albums
+    name_prefix: app.albums.

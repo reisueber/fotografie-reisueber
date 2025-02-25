@@ -112,3 +112,18 @@ sulu_reference_api:
     resource: "@SuluReferenceBundle/Resources/config/routing_api.yml"
     type: rest
     prefix: /admin/api
+
+app.albums.list:
+    path: /admin/api/albums
+    controller: App\Controller\Admin\AlbumController::cgetAction
+    methods: [GET]
+
+app.albums.detail:
+    path: /admin/api/albums/{id}
+    controller: App\Controller\Admin\AlbumController::getAction
+    methods: [GET]
+
+app.albums.create:
+    path: /admin/api/albums
+    controller: App\Controller\Admin\AlbumController::postAction
+    methods: [POST]

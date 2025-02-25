@@ -1,5 +1,7 @@
 <?php
 
+// src/Entity/Album.php
+
 declare(strict_types=1);
 
 namespace App\Entity;
@@ -10,10 +12,8 @@ use Sulu\Bundle\MediaBundle\Entity\MediaInterface;
 use Sulu\Component\Persistence\Model\AuditableInterface;
 use Sulu\Component\Persistence\Model\AuditableTrait;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="app_album")
- */
+#[ORM\Entity]
+#[ORM\Table(name: "app_album")]
 class Album implements AuditableInterface
 {
     use AuditableTrait;
@@ -23,16 +23,12 @@ class Album implements AuditableInterface
     final public const LIST_KEY = 'albums';
     final public const SECURITY_CONTEXT = 'sulu.album.albums';
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
     private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: "string")]
     private string $title;
 
     #[ORM\ManyToOne(targetEntity: MediaInterface::class)]
