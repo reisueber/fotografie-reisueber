@@ -40,15 +40,5 @@
             <field-name>price</field-name>
             <entity-name>App\Entity\PricePackage</entity-name>
         </property>
-
-        <property name="active" visibility="yes" translation="sulu_admin.active" type="bool">
-            <field-name>active</field-name>
-            <entity-name>PricePackage</entity-name>
-        </property>
-
-        <property name="name" translation="app.name" type="string">
-            <field-name>name</field-name>
-            <entity-name>PricePackage</entity-name>
-        </property>
     </properties>
 </list> 

@@ -125,21 +125,26 @@ class PricePackageController extends AbstractFOSRestController implements Secure
     #[Route(path: '', methods: ['GET'], name: 'app.price_packages.cget_price_package')]
     public function cgetAction(Request $request): Response
     {
-        $fieldDescriptors = $this->fieldDescriptorFactory->getFieldDescriptors(PricePackage::RESOURCE_KEY);
-        $listBuilder = $this->listBuilderFactory->create(PricePackage::class);
-        $this->restHelper->initializeListBuilder($listBuilder, $fieldDescriptors);
+        try {
+            $fieldDescriptors = $this->fieldDescriptorFactory->getFieldDescriptors(PricePackage::RESOURCE_KEY);
+            $listBuilder = $this->listBuilderFactory->create(PricePackage::class);
+            $this->restHelper->initializeListBuilder($listBuilder, $fieldDescriptors);
 
-        $listRepresentation = new PaginatedRepresentation(
-            $listBuilder->execute(),
-            PricePackage::RESOURCE_KEY,
-            (int) $listBuilder->getCurrentPage(),
-            (int) $listBuilder->getLimit(),
-            (int) $listBuilder->count()
-        );
+            $listRepresentation = new PaginatedRepresentation(
+                $listBuilder->execute(),
+                PricePackage::RESOURCE_KEY,
+                (int) $listBuilder->getCurrentPage(),
+                (int) $listBuilder->getLimit(),
+                (int) $listBuilder->count()
+            );
 
-        $view = View::create($listRepresentation);
-        $view->setFormat('json');
-        return $this->viewHandler->handle($view);
+            $view = View::create($listRepresentation);
+            $view->setFormat('json');
+            return $this->viewHandler->handle($view);
+        } catch (\Exception $e) {
+            // Für Debugging-Zwecke
+            return new Response('Error: ' . $e->getMessage(), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
