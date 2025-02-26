@@ -53,7 +53,7 @@ class PricePackage implements AuditableInterface
     /**
      * @var array<int, array{text: string}>
      */
-    #[ORM\Column(type: Types::JSON, options: ["default" => "[]"])]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     #[Serializer\Groups(["Default", "api"])]
     private array $bulletPoints = [];
 
