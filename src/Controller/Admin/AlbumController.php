@@ -61,7 +61,7 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
         $this->restHelper = $restHelper;
     }
 
-    #[Route(path: '/{id}', methods: ['GET'], name: 'app.albums.get_album')]
+    #[Route(path: '/admin/api/albums/{id}', methods: ['GET'], name: 'app.albums.get_album')]
     public function getAction(int $id): Response
     {
         $album = $this->entityManager->getRepository(Album::class)->find($id);
@@ -74,7 +74,7 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/{id}', methods: ['PUT'], name: 'app.albums.put_album')]
+    #[Route(path: '/admin/api/albums/{id}', methods: ['PUT'], name: 'app.albums.put_album')]
     public function putAction(Request $request, int $id): Response
     {
         $album = $this->entityManager->getRepository(Album::class)->find($id);
@@ -92,7 +92,7 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '', methods: ['POST'], name: 'app.albums.post_album')]
+    #[Route(path: '/admin/api/albums', methods: ['POST'], name: 'app.albums.post_album')]
     public function postAction(Request $request): Response
     {
         $album = new Album();
@@ -108,7 +108,7 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/{id}', methods: ['DELETE'], name: 'app.albums.delete_album')]
+    #[Route(path: '/admin/api/albums/{id}', methods: ['DELETE'], name: 'app.albums.delete_album')]
     public function deleteAction(int $id): Response
     {
         /** @var Album $album */
@@ -122,7 +122,7 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '', methods: ['GET'], name: 'app.albums.cget_album')]
+    #[Route(path: '/admin/api/albums', methods: ['GET'], name: 'app.albums.cget_album')]
     public function cgetAction(Request $request): Response
     {
         $fieldDescriptors = $this->fieldDescriptorFactory->getFieldDescriptors(Album::RESOURCE_KEY);
@@ -168,7 +168,21 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
 
         $entity->setTitle($data['title']);
         $entity->setImage($imageId ? $this->mediaManager->getEntityById($imageId) : null);
-        $entity->setTracklist($data['tracklist'] ?? []);
+        
+        // Ensure tracklist is an array
+        $tracklist = $data['tracklist'] ?? [];
+        if (is_string($tracklist)) {
+            try {
+                $tracklist = json_decode($tracklist, true, 512, JSON_THROW_ON_ERROR);
+                if (!is_array($tracklist)) {
+                    $tracklist = [];
+                }
+            } catch (\JsonException $e) {
+                $tracklist = [];
+            }
+        }
+        
+        $entity->setTracklist($tracklist);
     }
 
     public function getSecurityContext(): string

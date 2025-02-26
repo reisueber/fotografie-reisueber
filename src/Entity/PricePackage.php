@@ -40,20 +40,20 @@ class PricePackage implements AuditableInterface
 
     #[ORM\Column(type: "decimal", precision: 10, scale: 2, nullable: true)]
     #[Serializer\Groups(["Default", "api"])]
-    private ?float $price = null;
+    private ?string $price = null;
 
     #[ORM\Column(type: "text", nullable: true)]
     #[Serializer\Groups(["Default", "api"])]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::JSON)]
+    #[ORM\Column(type: Types::JSON, options: ["default" => "[]"])]
     #[Serializer\Groups(["Default", "api"])]
     private array $tracklist = [];
 
     /**
      * @var array<int, array{text: string}>
      */
-    #[ORM\Column(name: "bullet_points", type: Types::JSON)]
+    #[ORM\Column(type: Types::JSON, options: ["default" => "[]"])]
     #[Serializer\Groups(["Default", "api"])]
     private array $bulletPoints = [];
 
@@ -83,12 +83,12 @@ class PricePackage implements AuditableInterface
         $this->image = $image;
     }
 
-    public function getPrice(): ?float
+    public function getPrice(): ?string
     {
         return $this->price;
     }
 
-    public function setPrice(?float $price): static
+    public function setPrice(?string $price): static
     {
         $this->price = $price;
         return $this;

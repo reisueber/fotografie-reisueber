@@ -62,7 +62,7 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         $this->restHelper = $restHelper;
     }
 
-    #[Route(path: '/{id}', methods: ['GET'], name: 'app.price_packages.get_price_package')]
+    #[Route(path: '/admin/api/price_packages/{id}', methods: ['GET'], name: 'app.price_packages.get_price_package')]
     public function getAction(int $id): Response
     {
         $pricePackage = $this->entityManager->getRepository(PricePackage::class)->find($id);
@@ -75,7 +75,7 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/{id}', methods: ['PUT'], name: 'app.price_packages.put_price_package')]
+    #[Route(path: '/admin/api/price_packages/{id}', methods: ['PUT'], name: 'app.price_packages.put_price_package')]
     public function putAction(Request $request, int $id): Response
     {
         $pricePackage = $this->entityManager->getRepository(PricePackage::class)->find($id);
@@ -93,10 +93,15 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '', methods: ['POST'], name: 'app.price_packages.post_price_package')]
+    #[Route(path: '/admin/api/price_packages', methods: ['POST'], name: 'app.price_packages.post_price_package')]
     public function postAction(Request $request): Response
     {
         $pricePackage = new PricePackage();
+        
+        // Initialize with empty arrays
+        $pricePackage->setBulletPoints([]);
+        $pricePackage->setTracklist([]);
+        
         /** @var PricePackageData $data */
         $data = $request->toArray();
         $this->mapDataToEntity($data, $pricePackage);
@@ -109,7 +114,7 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '/{id}', methods: ['DELETE'], name: 'app.price_packages.delete_price_package')]
+    #[Route(path: '/admin/api/price_packages/{id}', methods: ['DELETE'], name: 'app.price_packages.delete_price_package')]
     public function deleteAction(int $id): Response
     {
         /** @var PricePackage $pricePackage */
@@ -123,7 +128,7 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         return $this->viewHandler->handle($view);
     }
 
-    #[Route(path: '', methods: ['GET'], name: 'app.price_packages.cget_price_package')]
+    #[Route(path: '/admin/api/price_packages', methods: ['GET'], name: 'app.price_packages.cget_price_package')]
     public function cgetAction(Request $request): Response
     {
         try {
@@ -158,6 +163,8 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         return [
             'id' => $entity->getId(),
             'title' => $entity->getTitle(),
+            'price' => $entity->getPrice(),
+            'description' => $entity->getDescription(),
             'image' => $image instanceof MediaInterface
                 ? ['id' => $image->getId()]
                 : null,
@@ -175,8 +182,44 @@ class PricePackageController extends AbstractFOSRestController implements Secure
 
         $entity->setTitle($data['title']);
         $entity->setImage($imageId ? $this->mediaManager->getEntityById($imageId) : null);
-        $entity->setTracklist($data['tracklist'] ?? []);
-        $entity->setBulletPoints($data['bulletPoints'] ?? []);
+        
+        // Set price as string
+        if (isset($data['price'])) {
+            $entity->setPrice((string)$data['price']);
+        }
+        
+        // Set description if available
+        if (isset($data['description'])) {
+            $entity->setDescription($data['description']);
+        }
+        
+        // Ensure tracklist is an array
+        $tracklist = $data['tracklist'] ?? [];
+        if (is_string($tracklist)) {
+            try {
+                $tracklist = json_decode($tracklist, true, 512, JSON_THROW_ON_ERROR);
+                if (!is_array($tracklist)) {
+                    $tracklist = [];
+                }
+            } catch (\JsonException $e) {
+                $tracklist = [];
+            }
+        }
+        $entity->setTracklist($tracklist);
+        
+        // Ensure bulletPoints is an array
+        $bulletPoints = $data['bulletPoints'] ?? [];
+        if (is_string($bulletPoints)) {
+            try {
+                $bulletPoints = json_decode($bulletPoints, true, 512, JSON_THROW_ON_ERROR);
+                if (!is_array($bulletPoints)) {
+                    $bulletPoints = [];
+                }
+            } catch (\JsonException $e) {
+                $bulletPoints = [];
+            }
+        }
+        $entity->setBulletPoints($bulletPoints);
     }
 
     public function getSecurityContext(): string

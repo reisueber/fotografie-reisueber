@@ -1,13 +1,13 @@
 {% if content.header_image %}
     <div
-            class="parallax-banner hidden md:block lazyload"
-            data-bg="{{ content.header_image.url }}">
+            class="parallax-banner hidden md:block"
+            style="background-image:url({{ content.header_image.url }});">
     </div>
 {% endif %}
 
 {% if content.header_image_mobile %}
     <div
-            class="parallax-banner block md:hidden lazyload"
-            data-bg="{{ content.header_image_mobile.url }}">
+            class="parallax-banner block md:hidden"
+            style="background-image:url({{ content.header_image_mobile.url }});">
     </div>
 {% endif %}

@@ -12,7 +12,7 @@ app_price_packages_index:
     path: /price-packages
     controller: App\Controller\Website\PricePackageController::index
     methods: [GET]
-
+    
 app_price_package_detail:
     path: /price-packages/{id}
     controller: App\Controller\Website\PricePackageController::detail

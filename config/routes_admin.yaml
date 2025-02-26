@@ -1,12 +1,3 @@
 # config/routes_admin.yaml
-app_album_api:
-    type: rest
-    resource: App\Controller\Admin\AlbumController
-    prefix: /admin/api/albums
-    name_prefix: app.albums.
-
-app_price_package_api:
-    type: rest
-    resource: App\Controller\Admin\PricePackageController
-    prefix: /admin/api/price_packages
-    name_prefix: app.price_packages.
+# Da wir die Routen jetzt direkt in den Controller-Klassen definieren,
+# brauchen wir keine REST-Konfiguration mehr

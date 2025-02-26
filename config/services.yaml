@@ -26,10 +26,10 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Controller\Admin\AlbumController:
+        public: true
         tags:
             - { name: sulu.context, context: admin }
             - { name: controller.service_arguments }
-        public: true
 
     App\Admin\AlbumsAdmin:
         arguments:
@@ -38,10 +38,10 @@ services:
             - { name: sulu.admin }
     
     App\Controller\Admin\PricePackageController:
+        public: true
         tags:
             - { name: sulu.context, context: admin }
             - { name: controller.service_arguments }
-        public: true
 
     App\Admin\PricePackageAdmin:
         arguments:
@@ -49,3 +49,8 @@ services:
         tags:
             - { name: sulu.admin }            
     
+    App\Controller\Website\PricePackageController:
+        public: true
+        tags:
+            - { name: sulu.context, context: website }
+            - { name: controller.service_arguments }
