@@ -30,7 +30,6 @@ use Symfony\Component\Routing\Annotation\Route;
  *     id: int|null,
  *     title: string,
  *     image: array{id: int}|null,
- *     tracklist: mixed[],
  *     bulletPoints: mixed[],
  * }
  */
@@ -100,7 +99,6 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         
         // Initialize with empty arrays
         $pricePackage->setBulletPoints([]);
-        $pricePackage->setTracklist([]);
         
         /** @var PricePackageData $data */
         $data = $request->toArray();
@@ -168,7 +166,6 @@ class PricePackageController extends AbstractFOSRestController implements Secure
             'image' => $image instanceof MediaInterface
                 ? ['id' => $image->getId()]
                 : null,
-            'tracklist' => $entity->getTracklist(),
             'bulletPoints' => $entity->getBulletPoints(),
         ];
     }
@@ -192,20 +189,6 @@ class PricePackageController extends AbstractFOSRestController implements Secure
         if (isset($data['description'])) {
             $entity->setDescription($data['description']);
         }
-        
-        // Ensure tracklist is an array
-        $tracklist = $data['tracklist'] ?? [];
-        if (is_string($tracklist)) {
-            try {
-                $tracklist = json_decode($tracklist, true, 512, JSON_THROW_ON_ERROR);
-                if (!is_array($tracklist)) {
-                    $tracklist = [];
-                }
-            } catch (\JsonException $e) {
-                $tracklist = [];
-            }
-        }
-        $entity->setTracklist($tracklist);
         
         // Ensure bulletPoints is an array
         $bulletPoints = $data['bulletPoints'] ?? [];

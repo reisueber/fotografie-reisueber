@@ -30,7 +30,6 @@ use Symfony\Component\Routing\Annotation\Route;
  *     id: int|null,
  *     title: string,
  *     image: array{id: int}|null,
- *     tracklist: mixed[],
  * }
  */
 class AlbumController extends AbstractFOSRestController implements SecuredControllerInterface
@@ -155,7 +154,6 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
             'image' => $image instanceof MediaInterface
                 ? ['id' => $image->getId()]
                 : null,
-            'tracklist' => $entity->getTracklist(),
         ];
     }
 
@@ -168,21 +166,6 @@ class AlbumController extends AbstractFOSRestController implements SecuredContro
 
         $entity->setTitle($data['title']);
         $entity->setImage($imageId ? $this->mediaManager->getEntityById($imageId) : null);
-        
-        // Ensure tracklist is an array
-        $tracklist = $data['tracklist'] ?? [];
-        if (is_string($tracklist)) {
-            try {
-                $tracklist = json_decode($tracklist, true, 512, JSON_THROW_ON_ERROR);
-                if (!is_array($tracklist)) {
-                    $tracklist = [];
-                }
-            } catch (\JsonException $e) {
-                $tracklist = [];
-            }
-        }
-        
-        $entity->setTracklist($tracklist);
     }
 
     public function getSecurityContext(): string

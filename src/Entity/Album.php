@@ -6,7 +6,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Sulu\Bundle\MediaBundle\Entity\MediaInterface;
 use Sulu\Component\Persistence\Model\AuditableInterface;
@@ -35,12 +34,6 @@ class Album implements AuditableInterface
     #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?MediaInterface $image = null;
 
-    /**
-     * @var mixed[]
-     */
-    #[ORM\Column(type: Types::JSON)]
-    private array $tracklist = [];
-
     public function getId(): ?int
     {
         return $this->id;
@@ -65,21 +58,5 @@ class Album implements AuditableInterface
     public function setImage(?MediaInterface $image): void
     {
         $this->image = $image;
-    }
-
-    /**
-     * @return array<int, array{title: string, interpreter?: string|null}>
-     */
-    public function getTracklist(): array
-    {
-        return $this->tracklist;
-    }
-
-    /**
-     * @param array<int, array{title: string, interpreter?: string|null}> $tracklist
-     */
-    public function setTracklist(array $tracklist): void
-    {
-        $this->tracklist = $tracklist;
     }
 }

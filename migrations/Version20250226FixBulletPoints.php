@@ -43,13 +43,9 @@ final class Version20250226FixBulletPoints extends AbstractMigration
         // Check for tracklist
         $sql = "SHOW COLUMNS FROM `app_price_package` LIKE 'tracklist'";
         $stmt = $this->connection->executeQuery($sql);
-        if (count($stmt->fetchAllAssociative()) > 0) {
-            $this->addSql('ALTER TABLE app_price_package MODIFY tracklist JSON NOT NULL DEFAULT ("[]") COMMENT \'(DC2Type:json)\'');
-        }
         
         // Update existing records
         $this->addSql('UPDATE app_price_package SET bulletPoints = "[]" WHERE bulletPoints IS NULL OR bulletPoints = ""');
-        $this->addSql('UPDATE app_price_package SET tracklist = "[]" WHERE tracklist IS NULL OR tracklist = ""');
     }
 
     public function down(Schema $schema): void

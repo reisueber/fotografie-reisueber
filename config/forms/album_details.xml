@@ -18,11 +18,5 @@
                 <title>sulu_admin.image</title>
             </meta>
         </property>
-
-        <property name="tracklist" type="text_editor">
-            <meta>
-                <title>albums.tracklist</title>
-            </meta>
-        </property>
     </properties>
 </form>

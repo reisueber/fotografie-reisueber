@@ -24,13 +24,9 @@ final class Version20250226UpdatePricePackage extends AbstractMigration
         
         // Ensure bullet_points field has a default value
         $this->addSql('ALTER TABLE app_price_package MODIFY bullet_points JSON NOT NULL DEFAULT ("[]") COMMENT \'(DC2Type:json)\'');
-        
-        // Ensure tracklist field has a default value
-        $this->addSql('ALTER TABLE app_price_package MODIFY tracklist JSON NOT NULL DEFAULT ("[]") COMMENT \'(DC2Type:json)\'');
-        
+
         // Update existing records
         $this->addSql('UPDATE app_price_package SET bullet_points = "[]" WHERE bullet_points IS NULL OR bullet_points = ""');
-        $this->addSql('UPDATE app_price_package SET tracklist = "[]" WHERE tracklist IS NULL OR tracklist = ""');
     }
 
     public function down(Schema $schema): void
@@ -38,6 +34,5 @@ final class Version20250226UpdatePricePackage extends AbstractMigration
         // Restore original fields
         $this->addSql('ALTER TABLE app_price_package MODIFY price DECIMAL(10,2) NULL');
         $this->addSql('ALTER TABLE app_price_package MODIFY bullet_points JSON NOT NULL COMMENT \'(DC2Type:json)\'');
-        $this->addSql('ALTER TABLE app_price_package MODIFY tracklist JSON NOT NULL COMMENT \'(DC2Type:json)\'');
     }
 }
