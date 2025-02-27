@@ -112,3 +112,48 @@ sulu_reference_api:
     resource: "@SuluReferenceBundle/Resources/config/routing_api.yml"
     type: rest
     prefix: /admin/api
+
+app.albums.list:
+    path: /admin/api/albums
+    controller: App\Controller\Admin\AlbumController::cgetAction
+    methods: [GET]
+
+app.albums.detail:
+    path: /admin/api/albums/{id}
+    controller: App\Controller\Admin\AlbumController::getAction
+    methods: [GET]
+
+app.albums.create:
+    path: /admin/api/albums
+    controller: App\Controller\Admin\AlbumController::postAction
+    methods: [POST]
+
+app.price_packages.list:
+    path: /admin/api/price-packages
+    controller: App\Controller\Admin\PricePackageController::cgetAction
+    methods: [GET]
+
+app.price_packages.detail:
+    path: /admin/api/price-packages/{id}
+    controller: App\Controller\Admin\PricePackageController::getAction
+    methods: [GET]
+
+app.price_packages.create:
+    path: /admin/api/price-packages
+    controller: App\Controller\Admin\PricePackageController::postAction
+    methods: [POST]
+
+
+app.price_packages.update:
+    path: /admin/api/price-packages/{id}
+    controller: App\Controller\Admin\PricePackageController::putAction
+    methods: [PUT]
+
+app.price_packages.delete:
+    path: /admin/api/price-packages/{id}
+    controller: App\Controller\Admin\PricePackageController::deleteAction
+    methods: [DELETE]
+
+
+
+

@@ -1,0 +1,3 @@
+# config/routes_admin.yaml
+# Da wir die Routen jetzt direkt in den Controller-Klassen definieren,
+# brauchen wir keine REST-Konfiguration mehr

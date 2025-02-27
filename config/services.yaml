@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     default_locale: en
+    sulu.model.price_package.class: App\Entity\PricePackage
 
 services:
     # default configuration for services in *this* file
@@ -23,3 +24,33 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Controller\Admin\AlbumController:
+        public: true
+        tags:
+            - { name: sulu.context, context: admin }
+            - { name: controller.service_arguments }
+
+    App\Admin\AlbumsAdmin:
+        arguments:
+            - '@sulu_admin.view_builder_factory'
+        tags:
+            - { name: sulu.admin }
+    
+    App\Controller\Admin\PricePackageController:
+        public: true
+        tags:
+            - { name: sulu.context, context: admin }
+            - { name: controller.service_arguments }
+
+    App\Admin\PricePackageAdmin:
+        arguments:
+            - '@sulu_admin.view_builder_factory'
+        tags:
+            - { name: sulu.admin }            
+    
+    App\Controller\Website\PricePackageController:
+        public: true
+        tags:
+            - { name: sulu.context, context: website }
+            - { name: controller.service_arguments }

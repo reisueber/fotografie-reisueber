@@ -1,3 +1,4 @@
+# config/packages/fos_rest.yaml
 fos_rest:
     zone:
         - { path: ^/admin/* }
