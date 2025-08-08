@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app.request.locale|split('_')[0] }}">
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +19,9 @@
         {{ include('@SuluWebsite/Extension/seo.html.twig', {
             seo: extension.seo|default([]),
             content: content|default([]),
-            localizations: localizations|default([]),
+            localizations: "de",
             shadowBaseLocale: shadowBaseLocale|default(),
         }) }}
-    {% endblock %}
-
-    {% block localizations %}
-        {% for localization in localizations|filter(localization => localization.locale != 'en') %}
-            {% if localization.locale != app.request.locale %}
-                <link rel="alternate" href="{{ sulu_content_path(uuid, localization.locale) }}" hreflang="{{ localization.locale }}">
-            {% endif %}
-        {% endfor %}
     {% endblock %}
 
     {% block style %}
