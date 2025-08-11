@@ -1,9 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block structured_data %}
+    {# ueber mich #}
+    {% if id == "f5201a37-1c72-4274-8153-6642386badb3" %}
+        {% include "components/structured-data-about-me.html.twig" %}
+    {% endif %}
+
+    {# Fotoshooting #}
+    {% if id == "cbd5b604-25dd-40a5-a42d-a034fd6774b1" %}
+        {% include "components/structured-data-fotoshooting.html.twig" %}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     {% include "components/header-image.html.twig" %}
     
-    <div class="py-16 bg-white lg:w-[1200px] m-auto">
+    <div class="py-16 bg-white lg:w-[1200px] m-auto" data-id="{{ id }}">
         <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <h1>{{ content.title }}</h1>
 

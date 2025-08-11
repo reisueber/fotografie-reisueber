@@ -1,5 +1,9 @@
 {% extends "base.html.twig" %}
 
+{% block structured_data %}
+    {% include "components/structured-data-contact.html.twig" %}
+{% endblock %}
+
 {% block content %}
     {% set snippets = sulu_snippet_load_by_area('contact') %}
     {% include "components/header-image.html.twig" %}

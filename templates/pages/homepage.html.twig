@@ -1,5 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% block structured_data %}
+    {% include "components/structured-data-homepage.html.twig" %}
+{% endblock %}
+
 {% block content %}
     {% include "components/parallax-banner.html.twig" %}
     {% include "components/hero.html.twig" %}
