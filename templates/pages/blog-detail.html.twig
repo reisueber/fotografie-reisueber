@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+    <div class="min-h-screen bg-white pt-24 pb-16">
+        <article class="container mx-auto px-6 lg:w-[1000px]">
+            <div class="mb-8">
+                <a href="javascript:history.back()" 
+                   class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Zurück
+                </a>
+                
+                {% if post.publishedAt %}
+                    <time class="text-sm text-gray-500 block mb-4" datetime="{{ post.publishedAt|date('Y-m-d') }}">
+                        {{ post.publishedAt|date('d.m.Y') }}
+                    </time>
+                {% endif %}
+                
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    {{ post.title }}
+                </h1>
+                
+                {% if post.teaser %}
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        {{ post.teaser }}
+                    </p>
+                {% endif %}
+            </div>
+
+            {% if post.image %}
+                <div class="mb-10 rounded-lg overflow-hidden shadow-lg">
+                    <img src="{{ post.image.url }}" 
+                         alt="{{ post.image.title ?? post.title }}"
+                         class="w-full h-auto">
+                </div>
+            {% endif %}
+
+            {% if post.content %}
+                <div class="prose prose-lg max-w-none mb-12">
+                    {{ post.content|raw }}
+                </div>
+            {% endif %}
+
+            <div class="border-t pt-8 mt-12">
+                <a href="{{ path('blog_index') }}" 
+                   class="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Alle Blog-Posts ansehen
+                </a>
+            </div>
+        </article>
+    </div>
+{% endblock %}
+

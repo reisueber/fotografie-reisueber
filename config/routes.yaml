@@ -1,12 +1,12 @@
+blog_fallback:
+    path: /blog
+    controller: App\Controller\Website\BlogController::fallbackIndexAction
+
 controllers:
     resource:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
-
-#static:
-#    path: /static-route
-#    controller: App\Controller\DefaultController::index
 
 # If you have a simple login on your website activate the following routes
 # If you need registration or profile edit have a look at the:
