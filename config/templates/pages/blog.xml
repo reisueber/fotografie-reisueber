@@ -5,9 +5,8 @@
 
     <key>blog</key>
 
-    <view>templates/pages/blog</view>
+    <view>pages/blog</view>
     <controller>App\Controller\Website\BlogController::indexAction</controller>
-    <cacheLifetime>2400</cacheLifetime>
 
     <meta>
         <title lang="de">Blog</title>
