@@ -1,0 +1,6 @@
+---
+alwaysApply: true
+---
+
+- Verwende chrome-devtools wenn eine Seite verglichen oder geöffnet werden soll
+- Wenn du dich in der lokalen Entwicklungsumgebung unter http://localhost:8000/admin anmelden musst, nutze als Benutzer admin und als Passwort admin 

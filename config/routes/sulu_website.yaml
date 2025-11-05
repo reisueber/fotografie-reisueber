@@ -18,6 +18,11 @@ app_price_package_detail:
     controller: App\Controller\Website\PricePackageController::detail
     methods: [GET]
 
+app_blog_fallback:
+    path: /blog
+    controller: 'App\Controller\Website\BlogController::fallbackIndexAction'
+    methods: [GET]
+
 when@dev:
     _portal_errors:
         resource: "@SuluWebsiteBundle/Resources/config/routing_error.yml"

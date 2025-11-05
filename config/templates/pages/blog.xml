@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<template xmlns="http://schemas.sulu.io/template/template"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+
+    <key>blog</key>
+
+    <view>pages/blog</view>
+    <controller>Sulu\Bundle\WebsiteBundle\Controller\DefaultController::indexAction</controller>
+    <cacheLifetime>2400</cacheLifetime>
+
+    <meta>
+        <title lang="de">Blog</title>
+        <title lang="en">Blog</title>
+    </meta>
+
+    <properties>
+        <property name="title" type="text_line" mandatory="true">
+            <meta>
+                <title lang="de">Titel</title>
+                <title lang="en">Title</title>
+            </meta>
+            <tag name="sulu.rlp.part"/>
+        </property>
+
+        <property name="url" type="resource_locator" mandatory="true">
+            <meta>
+                <title lang="de">Ressourcen-Locator</title>
+                <title lang="en">Resource locator</title>
+            </meta>
+            <tag name="sulu.rlp"/>
+        </property>
+
+        <section name="header_image">
+            <meta>
+                <title>Headerimage</title>
+            </meta>
+            <properties>
+                <property name="header_image" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Headerimage</title>
+                        <title lang="de">Headerimage</title>
+                    </meta>
+                </property>
+                <property name="header_image_mobile" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Headerimage Mobile</title>
+                        <title lang="de">Headerimage Mobile</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
+        <property name="subtitle" type="text_line">
+            <meta>
+                <title lang="de">Untertitel</title>
+                <title lang="en">Subtitle</title>
+            </meta>
+        </property>
+
+        <property name="postsPerPage" type="text_line">
+            <meta>
+                <title lang="de">Posts pro Seite</title>
+                <title lang="en">Posts per page</title>
+            </meta>
+            <params>
+                <param name="default_value" value="12"/>
+            </params>
+        </property>
+    </properties>
+</template>
+

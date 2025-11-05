@@ -154,6 +154,27 @@ app.price_packages.delete:
     controller: App\Controller\Admin\PricePackageController::deleteAction
     methods: [DELETE]
 
+app.blog_posts.list:
+    path: /admin/api/blog-posts
+    controller: App\Controller\Admin\BlogPostController::cgetAction
+    methods: [GET]
 
+app.blog_posts.detail:
+    path: /admin/api/blog-posts/{id}
+    controller: App\Controller\Admin\BlogPostController::getAction
+    methods: [GET]
 
+app.blog_posts.post:
+    path: /admin/api/blog-posts
+    controller: App\Controller\Admin\BlogPostController::postAction
+    methods: [POST]
 
+app.blog_posts.put:
+    path: /admin/api/blog-posts/{id}
+    controller: App\Controller\Admin\BlogPostController::putAction
+    methods: [PUT]
+
+app.blog_posts.delete:
+    path: /admin/api/blog-posts/{id}
+    controller: App\Controller\Admin\BlogPostController::deleteAction
+    methods: [DELETE]

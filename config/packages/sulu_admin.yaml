@@ -15,3 +15,7 @@ sulu_admin:
             routes:
                 list: app.price_packages.list
                 detail: app.price_packages.detail
+        blog_posts:
+            routes:
+                list: app.blog_posts.list
+                detail: app.blog_posts.detail

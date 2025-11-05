@@ -12,6 +12,9 @@ services:
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    
+    Sulu\Component\DocumentManager\DocumentManagerInterface: '@sulu_document_manager.document_manager'
+    Sulu\Component\Content\Compat\StructureManagerInterface: '@sulu.content.structure_manager'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -50,6 +53,24 @@ services:
             - { name: sulu.admin }            
     
     App\Controller\Website\PricePackageController:
+        public: true
+        tags:
+            - { name: sulu.context, context: website }
+            - { name: controller.service_arguments }
+
+    App\Controller\Admin\BlogPostController:
+        public: true
+        tags:
+            - { name: sulu.context, context: admin }
+            - { name: controller.service_arguments }
+
+    App\Admin\BlogPostAdmin:
+        arguments:
+            - '@sulu_admin.view_builder_factory'
+        tags:
+            - { name: sulu.admin }
+
+    App\Controller\Website\BlogController:
         public: true
         tags:
             - { name: sulu.context, context: website }

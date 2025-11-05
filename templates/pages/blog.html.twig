@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block structured_data %}
+{% endblock structured_data %}
+
+{% block content %}
+    {% include "components/header-image.html.twig" %}
+
+    <div class="py-16 bg-white lg:w-[1200px] m-auto">
+        <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
+            <h1>{{ content.title }}</h1>
+
+            <div class="mt-8">
+                {% if posts is defined and posts is not empty %}
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {% for post in posts %}
+                            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                                <a href="{{ path('blog_show', {'slug': post.slug}) }}" class="block">
+                                    {% if post.image %}
+                                        <div class="aspect-[16/9] overflow-hidden">
+                                            <img src="{{ post.image.thumbnails['400x400'] ?? post.image.url }}" 
+                                                alt="{{ post.image.title ?? post.title }}"
+                                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                        </div>
+                                    {% else %}
+                                        <div class="aspect-[16/9] bg-gray-200 flex items-center justify-center">
+                                            <svg class="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </div>
+                                    {% endif %}
+                                </a>
+                                
+                                <div class="p-6">
+                                    {% if post.publishedAt %}
+                                        <time class="text-sm text-gray-500 mb-2 block" datetime="{{ post.publishedAt|date('Y-m-d') }}">
+                                            {{ post.publishedAt|date('d.m.Y') }}
+                                        </time>
+                                    {% endif %}
+                                    
+                                    <h2 class="text-xl font-semibold text-gray-900 mb-3 hover:text-gray-700">
+                                        <a href="{{ path('blog_show', {'slug': post.slug}) }}">
+                                            {{ post.title }}
+                                        </a>
+                                    </h2>
+                                    
+                                    {% if post.teaser %}
+                                        <p class="text-gray-600 mb-4 line-clamp-3">
+                                            {{ post.teaser }}
+                                        </p>
+                                    {% endif %}
+                                    
+                                    <a href="{{ path('blog_show', {'slug': post.slug}) }}" 
+                                    class="inline-flex items-center text-gray-900 hover:text-gray-700 font-medium">
+                                        Weiterlesen
+                                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-16">
+                        <p class="text-gray-500 text-lg">Noch keine Blog-Posts verfügbar.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

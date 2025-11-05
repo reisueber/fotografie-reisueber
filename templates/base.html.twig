@@ -17,6 +17,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
+    {# Open Graph #}
+    <meta property="og:title" content="Fotografie Reisüber – Familien- & Hochzeitsfotografie in Lingen">
+    <meta property="og:description" content="Sandra Reisüber - Professionelle Fotografin für Hochzeiten, Familien, Paare und Kinder in Lingen und Umgebung">
+    <meta property="og:image" content="https://fotografie-reisueber.de/media/84/download/Fotografin-Sandra-Reisüber.webp">
+    <meta property="og:url" content="https://fotografie-reisueber.de/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     {% block meta %}
         {{ include('@SuluWebsite/Extension/seo.html.twig', {
             seo: extension.seo|default([]),
@@ -88,7 +96,7 @@
             <div id="mobile-menu" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
                 <div class="fixed right-0 top-0 bottom-0 w-64 min-h-screen bg-white shadow-lg transform transition-transform duration-300 translate-x-full overflow-y-auto" id="mobile-menu-content">
                     <div class="p-4 flex justify-between items-center border-b">
-                        <h3 class="text-lg font-semibold">Menü</h3>
+                        <span class="text-lg font-semibold">Menü</span>
                         <button id="close-mobile-menu" class="text-gray-500">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>

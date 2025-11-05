@@ -56,6 +56,30 @@
             </properties>
         </section>
 
+        <section name="campaigns">
+            <meta>
+                <title>Aktionen</title>
+            </meta>
+            <properties>
+                <property name="campaign_title" type="text_line">
+                    <meta>
+                        <title>Titel</title>
+                    </meta>
+                </property>
+                <property name="campaign_text" type="text_line">
+                    <meta>
+                        <title>Text</title>
+                    </meta>
+                </property>
+                <property name="campaign_image" type="single_media_selection">
+                    <meta>
+                        <title lang="en">Image</title>
+                        <title lang="de">Bild</title>
+                    </meta>
+                </property>
+            </properties>
+        </section>
+
         <section name="serviceDetails_1">
             <meta>
                 <title>Angebote 1</title>
