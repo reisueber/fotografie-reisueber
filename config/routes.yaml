@@ -1,7 +1,3 @@
-blog_fallback:
-    path: /blog
-    controller: App\Controller\Website\BlogController::fallbackIndexAction
-
 controllers:
     resource:
         path: ../src/Controller/
